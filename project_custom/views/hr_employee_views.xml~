@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        
+        <record id="view_employee_tree_custom" model="ir.ui.view">
+            <field name="name">hr.employee.tree.custom</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="github_account"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_employee_kanban_custom" model="ir.ui.view">
+            <field name="name">hr.employee.kanban.custom</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_kanban_details']" position="inside">
+                    <div>
+                        <strong>GitHub:</strong>
+                        <field name="github_account"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_employee_form_custom" model="ir.ui.view">
+            <field name="name">hr.employee.form.custom</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Project Collaborations">
+                        <field name="collaborator_project_ids">
+                            <tree editable="bottom" colors="green:status=='active';red:status=='inactive'">
+                                <field name="project_id"/>
+                                <field name="status"/>
+                                <button name="set_active" string="Activate" type="object"
+                                        attrs="{'invisible': [('status','=','active')]}"/>
+                                <button name="set_inactive" string="Deactivate" type="object"
+                                        attrs="{'invisible': [('status','=','inactive')]}"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

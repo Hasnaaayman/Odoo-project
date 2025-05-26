@@ -1,0 +1,11 @@
+<odoo>
+    <report
+        id="action_project_pdf_report"
+        string="Project PDF Report"
+        model="project.project"
+        report_type="qweb-pdf"
+        name="project_employee_extension.report_project_pdf_template"
+        file="project_employee_extension.report_project_pdf_template"
+        print_report_name="'Project Report - %s' % (object.name)"
+    />
+</odoo>

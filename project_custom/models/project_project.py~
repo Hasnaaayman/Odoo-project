@@ -1,0 +1,11 @@
+from odoo import models, fields, api
+
+class ProjectProject(models.Model):
+    _inherit = 'project.project'
+
+    odoo_version = fields.Integer(string='Odoo Version')
+    odoo_types = fields.Selection([
+        ('community', 'Community'),
+        ('enterprise', 'Enterprise')
+    ], default='enterprise', string="Odoo Type")
+    

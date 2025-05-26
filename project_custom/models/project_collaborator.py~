@@ -1,0 +1,4 @@
+from odoo import models,fields
+
+class ProjectCollaborator(models.Model):
+    _inherit = 'project.collaborator'

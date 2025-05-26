@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+       <record id="view_project_form_custom" model="ir.ui.view">
+        <field name="name">project.project.form.custom</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Collaborators">
+                    <field name="collaborators_ids">
+                        <tree editable="bottom">
+                            <field name="employee_id"/>
+                            <field name="status"/>
+                            <button name="set_active" string="Activate" type="object"
+                                    attrs="{'invisible': [('status', '=', 'active')]}" />
+                            <button name="set_inactive" string="Deactivate" type="object"
+                                    attrs="{'invisible': [('status', '=', 'inactive')]}" />
+                        </tree>
+                    </field>
+                </page>
+                <page string="Odoo Info">
+                    <group>
+                        <field name="odoo_version"/>
+                        <field name="odoo_types"/>
+                        <field name="github_repo_name"/>
+                        <field name="github_repo_url"/>
+                        <field name="hosting"/>
+                        <field name="hosting_description"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>
